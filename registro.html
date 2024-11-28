@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Lista de Tarefas</title>
     <link rel="stylesheet" href="./styles/registro.css">
+    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
-    <div>
-        <h1>Registro</h1>
-        <form>
-            <div>
-                <label for="nome">Nome</label>
-                <input id="nome" type="text" placeholder="Digite o seu nome"/>
-            </div>
+    <div class="container">
 
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="Digite o seu email"/>
-            </div>
+        <div class="content">
+            <h1>Registro</h1>
+            <form class="form">
 
+                <div class="input-group">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" placeholder="Digite o seu nome"/>
+                </div>
+    
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="Digite o seu email"/>
+                </div>
+    
+                
+                <div class="input-group">
+                    <label for="password">senha</label>
+                    <input id="password" type="password" placeholder="Digite sua senha" />
+                </div>
+            </form>
             
-            <div>
-                <label for="password">senha</label>
-                <input id="password" type="password" placeholder="Digite sua senha" />
-            </div>
-        </form>
-        
-        <button>cadastrar</button>
-        <p>Já tem uma conta? Faça o <a href="/login.html">Login</a></p>
-
+            <button class="button">cadastrar</button>
+            <p>Já tem uma conta? Faça o <a href="/login.html">Login</a></p>
+        </div>
+       
     </div>
 
 

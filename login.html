@@ -5,27 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Lista de Tarefas</title>
     <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/globals.css">
 </head>
 <body>
 
-    <div>
-        <h1>Login</h1>
-        <form>
+    <div class="container">
 
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="text" placeholder="Digite seu email"/>
-            </div>
+        <div class="content">
+            <h1>Faça o seu login</h1>
+            <form class="form">
 
-            <div>
-                <label for="password">senha</label>
-                <input id="password" type="password" placeholder="Digite sua senha" />
-            </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" placeholder="Digite seu email"/>
+                </div>
 
-        </form>
+                <div class="input-group">
+                    <label for="password">senha</label>
+                    <input id="password" type="password" placeholder="Digite sua senha" />
+                </div>
 
-        <button>Entrar</button>    
-        <p>Não tem uma conta? Faça seu <a href="/registro.html">cadastro</a></p>
+            </form>
+
+            <button class="button">Entrar</button>    
+            <p>Não tem uma conta? Faça seu <a href="/registro.html">cadastro</a></p>
+        </div>
+        
 
     </div>
 

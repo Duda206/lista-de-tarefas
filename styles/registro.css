@@ -1,0 +1,11 @@
+.content {
+    width: 300px;
+}
+
+.content h1 {
+    margin-bottom: 10px;
+}
+.form {
+    width: 100%;
+    margin-bottom: 30px;
+}
