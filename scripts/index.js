@@ -5,7 +5,7 @@ function isLoggedIn() {
 
 function ensureLoggedIn() {
     if (!isLoggedIn()) {
-        window.location.href = "/login.html"; 
+        window.location.href = "/login.html";
     }
 }
 
@@ -14,28 +14,38 @@ ensureLoggedIn();
 function addTask() {
     const inputTaskValue = document.getElementById('input-task').value;
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const logged = JSON.parse(localStorage.getItem("logged"));
+    const userEmail = logged.email;
+
+    const allTasks = JSON.parse(localStorage.getItem('tasks')) || {};
+    const userTasks = allTasks[userEmail] || [];
 
     if (inputTaskValue) {
-        tasks.push({
+        userTasks.push({
             task: inputTaskValue,
             done: false
         });
     }
 
+    allTasks[userEmail] = userTasks;
     document.getElementById('input-task').value = '';
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(allTasks));
     listTasks();
 }
 
 function listTasks() {
     const divTasks = document.getElementById('tasks');
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    const logged = JSON.parse(localStorage.getItem("logged")); 
+    const userEmail = logged.email;
+
+    const allTasks = JSON.parse(localStorage.getItem('tasks')) || {};
+    const userTasks = allTasks[userEmail] || [];
 
     divTasks.innerHTML = '';
 
-    if (tasks.length > 0) {
-        tasks.forEach((taskObj, index) => {
+    if (userTasks.length > 0) {
+        userTasks.forEach((taskObj, index) => {
             const taskCard = document.createElement('div');
             taskCard.classList.add('task-card');
 
@@ -59,14 +69,20 @@ function listTasks() {
 
             checkButton.addEventListener('click', () => {
                 taskObj.done = !taskObj.done;
-                localStorage.setItem('tasks', JSON.stringify(tasks));
+                allTasks[userEmail] = userTasks;
+                localStorage.setItem('tasks', JSON.stringify(allTasks));
                 listTasks();
             });
 
             const trashIcon = document.createElement('img');
             trashIcon.src = 'assets/icons/trash-icon.svg';
 
-            trashIcon.addEventListener('click', () => removeTask(index));
+            trashIcon.addEventListener('click', () => {
+                userTasks.splice(index, 1);
+                allTasks[userEmail] = userTasks;
+                localStorage.setItem('tasks', JSON.stringify(allTasks));
+                listTasks();
+            });
 
             actionsDiv.appendChild(checkButton);
             actionsDiv.appendChild(trashIcon);
@@ -79,18 +95,14 @@ function listTasks() {
     }
 }
 
-function removeTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
-    tasks.splice(index, 1);
-
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    listTasks();
-}
-
 function refreshTasks() {
-    localStorage.setItem('tasks', JSON.stringify([]));
+    const logged = JSON.parse(localStorage.getItem("logged"));
+    const userEmail = logged.email;
+
+    const allTasks = JSON.parse(localStorage.getItem('tasks')) || {};
+    allTasks[userEmail] = [];
+
+    localStorage.setItem('tasks', JSON.stringify(allTasks));
     listTasks();
 }
 
