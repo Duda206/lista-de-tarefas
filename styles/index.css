@@ -40,6 +40,7 @@ h1 {
     flex-direction: column;
     gap: 16px;
     margin-top: 38px;
+    padding: 20px;
 }
 
 .task-card {
