@@ -10,8 +10,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Pagina Principal</h1>
+    <div class="container"> 
 
+        <div class="content">
+            <h1>Lista de tarefas</h1>
+
+            <div class="add-task-content">  
+                <input id="input-task" placeholder="Adicione uma nova tarefa"/>
+
+                <button class="button" onclick="addTask()">+</button>
+                <button class="button" onclick="refreshTasks()"> <img src="assets/icons/refresh-icon.svg" id="refresh-icon"/></button>
+                
+            </div>
+
+            <button class="button-logout" onclick="logout()">Sair</button>
+
+            <div id="tasks"></div>
+        </div>
+      
+       
+    </div>
+    
 
     <script src="./scripts/index.js"></script>
 </body>
